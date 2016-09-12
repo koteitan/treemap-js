@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><title>Drawing Treemap in Javscript</title>
+<meta http-equiv="Content-type" content="text/html; charset=sjis">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style><!--
+  body{font-family:Segoe UI}
+  a{color:black;border-style:none;text-decoration:underline}
+  a:link{color:black;border-style:none;text-decoration:underline}
+  a:visited{color:black;border-style:none;text-decoration:underline}
+  a:hover{color:black;border-color:none;text-decoration:underline}
+  address{text-align:right;font-style:normal}
+  .myinput{border-style:solid;border-color:black;border-width:1px;background-color:white;color:black;font-family:ＭＳ ゴシック;font-size:10pt;padding:2px}
+  .tdbutton{border-width:1px;border-style:solid;border-color:white;height:30px;width:30px}
+  hr{border-style:solid}
+  .console{font-family:MS Gothic;color:white;background-color:black}
+--></style></head>
+<h1>Drawing Treemap in Javscript</h1>
+<hr>
+<img id='outimg'>
+<canvas id='outcanvas' style='display:none'></canvas>
+<form id='form'>
+<input type=button id=draw value='draw' onclick='javscript:dothemall();'>
+width: <input type=text id='width'  value="400" class='myinput' style='text-align:right'>
+height:<input type=text id='height' value="400" class='myinput' style='text-align:right'>
+sort:
+<input type=radio id='howtosort' name='howtosort' checked>manual
+<input type=radio id='howtosort' name='howtosort' >auto<br>
+data:<br>
+<textarea id='intext' rows=30 cols=50 class='myinput'>
+Apple   ,61.2  ,#ff0000
+SHARP   ,10.1  ,#880000
+SONY    , 9.3  ,#00ff00
+Kyocera , 7.0  ,#008800
+Fujitsu , 6.2  ,#0000ff
+Others  , 6.2  ,#444444
+</textarea>
+<textarea id='debug' rows=30 cols=50 class='myinput'>
+</textarea>
+</form>
+<body>
+</body>
+<script type="text/javascript" src="./exarray.js"></script>
+<script type="text/javascript" src="./treemap.js"></script>
+</html>
+
+
