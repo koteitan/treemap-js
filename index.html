@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><title>Drawing Treemap in Javscript</title>
+<html><head><title>Drawing Treemap Online</title>
 <meta http-equiv="Content-type" content="text/html; charset=sjis">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <style><!--
@@ -14,30 +14,47 @@
   hr{border-style:solid}
   .console{font-family:MS Gothic;color:white;background-color:black}
 --></style></head>
-<h1>Drawing Treemap in Javscript</h1>
-<hr>
+<h1>Drawing Treemap Online</h1>
 <img id='outimg'>
 <canvas id='outcanvas' style='display:none'></canvas>
+<br>
+<br>
 <form id='form'>
-<input type=button id=draw value='draw' onclick='javscript:dothemall();'>
-width: <input type=text id='width'  value="400" class='myinput' style='text-align:right'>
-height:<input type=text id='height' value="400" class='myinput' style='text-align:right'>
+data: (with comma delimitor, 1st column=caption, 2nd column=number, 3rd column=color (ex.#123456))<br>
+<textarea id='intext' rows=10 cols=30 class='myinput'>
+Apple   ,0.612 
+SHARP   ,0.101 
+SONY    ,0.093 
+Kyocera ,0.070 
+Fujitsu ,0.062 
+Others  ,0.062 
+</textarea><br>
+↓<br>
 sort:
-<input type=radio id='howtosort' name='howtosort' checked>manual
-<input type=radio id='howtosort' name='howtosort' >auto<br>
-data:<br>
-<textarea id='intext' rows=30 cols=50 class='myinput'>
-Apple   ,61.2  ,#ff0000
-SHARP   ,10.1  ,#880000
-SONY    , 9.3  ,#00ff00
-Kyocera , 7.0  ,#008800
-Fujitsu , 6.2  ,#0000ff
-Others  , 6.2  ,#444444
-</textarea>
-<textarea id='debug' rows=30 cols=50 class='myinput'>
+<input type=radio id='howtosort' name='howtosort' onchange='javascript:dothemall();' checked>manual
+<input type=radio id='howtosort' name='howtosort' onchange='javascript:dothemall();'>auto
+<br>
+caption:
+<input type=radio id='caption' name='caption' onchange='javascript:dothemall();'        >caption+amount
+<input type=radio id='caption' name='caption' onchange='javascript:dothemall();' checked>caption+percent
+<input type=radio id='caption' name='caption' onchange='javascript:dothemall();'        >caption
+<br>
+width: <input type=text id='width'  value="600" class='myinput' style='text-align:right' onchange='javascript:dothemall();' >
+height:<input type=text id='height' value="400" class='myinput' style='text-align:right' onchange='javascript:dothemall();' >
+<br>
+↓<br>
+<input type=button id=draw value='draw' onclick='javscript:dothemall();'><br>
+↓<br>
+Right click image above, and save.<br>
+<textarea id='debug' rows=30 cols=50 class='myinput' style='display:none'>
 </textarea>
 </form>
-<body>
+<address id="debug">
+Drawing Treemap Online
+programmed by <a href="http://twitter.com/#!/koteitan">koteitan</a><br>
+Javascript is at <a href="https://github.com/koteitan/treemap-js">github</a><br>
+</address>
+<body onload='javascript:dothemall();'>
 </body>
 <script type="text/javascript" src="./exarray.js"></script>
 <script type="text/javascript" src="./treemap.js"></script>
