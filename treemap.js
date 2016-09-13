@@ -1,4 +1,5 @@
 var ctx     = outcanvas.getContext('2d');
+var items;
 var allsum;
 var allmax;
 var allmin;
@@ -29,7 +30,7 @@ var dothemall=function(){
       title, amount, color\n
       ...
   output:
-    a[l] = [title, amount, color]
+    a[l] = [title, amount, color, index]
     k[l] = amount
 ---------------------------*/
 var parseText=function(str){
@@ -53,6 +54,7 @@ var parseText=function(str){
       k.push(parseFloat(row[1]));
     }
   }
+  items = a.length;
   if(howtosort[1].checked){
     var idx=k.sorti();
     var a0=a.clone();
@@ -62,12 +64,15 @@ var parseText=function(str){
       k[l]=k0[idx[l]];
     }
   }
+  for(var l=0;l<a.length;l++){
+    a[l].push(l);
+  }
   return [a,k];
 }
 
 /*---------------------------
   input:
-    a[l] = [title, amount, color]
+    a[l] = [title, amount, color, index]
     k[l] = amount
     x0,y0 = start position
     wx,wy = width and height
@@ -76,7 +81,7 @@ var parseText=function(str){
     tree[]:
      tree.length == 2 then tree[0] and tree[1] are childlen
      tree.length == 5 then tree = [a,x0,y0,wx,wy]
-       a = [title, amount, color]
+       a = [title, amount, color, index]
        x0,y0 = start position
        wx,wy = width and height
 ---------------------------*/
@@ -126,6 +131,7 @@ var drawTree=function(t){
     var text   = t[0][0];
     var key    = t[0][1];
     var color  = t[0][2];
+    var idx    = t[0][3];
     ctx.font = '20px Segoe UI';
     textwidth  = ctx.measureText(text).width;
     textheight = textwidth/text.length*2;
@@ -139,9 +145,9 @@ var drawTree=function(t){
       ctx.fillStyle=color;
     }else{
       //auto color
-      var r=(key-allmin)/(allmax-allmin);
+      var r=idx/items;
       var g=1-r;
-      ctx.fillStyle='rgb('+Math.floor(r*128+128)+','+Math.floor(g*128+128)+',0)';
+      ctx.fillStyle='rgb('+Math.floor(r*128+128)+','+Math.floor(g*256)+',0)';
     }
     ctx.fillRect(t[1],t[2],t[3],t[4]);
     ctx.strokeRect(t[1],t[2],t[3],t[4]);

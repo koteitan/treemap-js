@@ -20,8 +20,8 @@
 <br>
 <br>
 <form id='form'>
-data: (with comma delimitor, 1st column=caption, 2nd column=number, 3rd column=color (ex.#123456))<br>
-<textarea id='intext' rows=10 cols=30 class='myinput'>
+data:<br>
+<textarea id='intext' rows=10 cols=80 class='myinput'>
 Apple   ,0.612 
 SHARP   ,0.101 
 SONY    ,0.093 
@@ -29,6 +29,7 @@ Kyocera ,0.070
 Fujitsu ,0.062 
 Others  ,0.062 
 </textarea><br>
+(with comma delimitor, 1st column=caption, 2nd column=number, 3rd column=color (ex.#123456, optional))<br>
 Å´<br>
 sort:
 <input type=radio id='howtosort' name='howtosort' onchange='javascript:dothemall();' checked>manual
@@ -46,7 +47,7 @@ height:<input type=text id='height' value="400" class='myinput' style='text-alig
 <input type=button id=draw value='draw' onclick='javscript:dothemall();'><br>
 Å´<br>
 Right click image above, and save.<br>
-<textarea id='debug' rows=30 cols=50 class='myinput' style='display:none'>
+<textarea id='debug' rows=50 cols=50 class='myinput' style='display:none'>
 </textarea>
 </form>
 <address id="debug">
