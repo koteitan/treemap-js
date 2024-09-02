@@ -5,18 +5,18 @@ var allmax;
 var allmin;
 var dothemall=function(){
   //parse
-  var w=parseInt(width.value);
-  var h=parseInt(height.value);
-  var ak=parseText(intext.value);
+  var w=parseInt(form.width.value);
+  var h=parseInt(form.height.value);
+  var ak=parseText(form.intext.value);
   allsum = ak[1].sum();
   allmax = ak[1].max();
   allmin = ak[1].min();
   //make tree
   var t=makeTree(ak[0],ak[1],0,0,w,h,ak[1].sum());
-//  debug.value=t.toString();
+//  form.debug.value=t.toString();
   // draw
-  outcanvas.width =width .value;
-  outcanvas.height=height.value;
+  outcanvas.width =form.width .value;
+  outcanvas.height=form.height.value;
   drawTree(t);
   outImg();
 };
@@ -55,7 +55,7 @@ var parseText=function(str){
     }
   }
   items = a.length;
-  if(howtosort[1].checked){
+  if(form.howtosort[1].checked){
     var idx=k.sorti();
     var a0=a.clone();
     var k0=k.clone();
@@ -152,10 +152,10 @@ var drawTree=function(t){
     ctx.fillRect(t[1],t[2],t[3],t[4]);
     ctx.strokeRect(t[1],t[2],t[3],t[4]);
     ctx.fillStyle='black';
-    if(caption[0].checked){
+    if(form.caption[0].checked){
       ctx.fillText(text,t[1]+t[3]/2-textwidth/2,t[2]+t[4]/2-textheight/2,t[3]);
       ctx.fillText(key ,t[1]+t[3]/2-textwidth/2,t[2]+t[4]/2+textheight/2,t[3]);
-    }else if(caption[1].checked){
+    }else if(form.caption[1].checked){
       ctx.fillText(text,t[1]+t[3]/2-textwidth/2,t[2]+t[4]/2-textheight/2,t[3]);
       ctx.fillText(Math.floor(key*1000/allsum)/10+'%'
                        ,t[1]+t[3]/2-textwidth/2,t[2]+t[4]/2+textheight/2,t[3]);
@@ -166,8 +166,8 @@ var drawTree=function(t){
 }
 
 var outImg=function(){
-  outimg.width  = width.value;
-  outimg.height = height.value;
+  outimg.width  = form.width.value;
+  outimg.height = form.height.value;
   outimg.src = outcanvas.toDataURL('image/jpg');
 }
 Array.prototype.toString = function(){
